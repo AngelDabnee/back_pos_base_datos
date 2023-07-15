@@ -1,3 +1,7 @@
+<?php
+    include ("../inc/function.php");
+    validarUsuario(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body bgcolor ="ccd5ae">
-    <h1>Productos</h1>
+    <h1>Productos</h1> 
     <?php
+    menu();
     /*Establecemos la conexión a la BD con Mysql */
-    //$conn = new mysqli("localhost","id20924409_angeldabnee","AngelDabnee123.","id20924409_pos") 
-    $conn = new mysqli("localhost","root","","pos")  
-    or die("Por alguna razón no nos pudimos conectar al servidor");
+    //$conn = new mysqli("localhost","id20924409_angeldabnee","AngelDabnee123.","id20924409_pos"); 
+    $conn = new mysqli("localhost","root","","pos");
     /*ESTABLECEMOS LAS VARIABLES DE COMANDO */
     $sqlqueryselect = "SELECT * FROM productos;";/*COMANDO SELECT PARA PODER BUSCAR*/
     $comando = mysqli_query($conn , $sqlqueryselect);
@@ -32,7 +37,7 @@
                     <td>\n\t".$registro["nombre"]."</td>
                     <td>\n\t".$registro["precio"]."</td>
                     <td><a href = 'delete.php?codigo={$registro['codigo']}'><img src = '../img/delete_icon.png'></a></td>
-                    <td> <img src = '../img/update_icon.png'</td>
+                    <td><a href = 'update.php?codigo={$registro['codigo']}'><img src = '../img/update_icon.png'></a></td>
                 </tr>\n");
         }echo "</table>";
     }
@@ -50,5 +55,8 @@
         <input type ="submit" value = 'Agregar Producto'>
     </fieldset>
 </form>
+<?php
+        footer();
+    ?>
 </body>
 </html>

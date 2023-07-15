@@ -1,3 +1,6 @@
+<?php
+    include ("./inc/function.php");
+?>
 <html lang="en">
  <head>
     <meta charset="UTF-8">
@@ -10,14 +13,26 @@
         <h1>BIENVENIDO AL CRUD DE PRODUCTOS</h1>
         <div>
             <h2>Iniciar Sesion</h2>
-        <form action="productos/productos.php">
+        <form action="validar.php" method="post">
             <!---este input es para correo--->           
-            <input type="email" name="" id="" placeholder="Correo Electrónico" value="qwe@a.com" required><br>
+            <div class = "username">
+                <input type="email" name="correo" placeholder="Correo Electrónico" value="" required><br>
+            </div>
             <!---este input es para password--->
-            <input type="password" name="" id="" placeholder ="Contraseña" value="qwe" required><br>
+            <div class = "username">
+                <input type="password" name="password" placeholder ="Contraseña" value="" required><br>
+            </div>
             <!---este input es para login--->
-            <input type="submit" value="Login"><br>
+            <div class = "recordar">
+                <input type="submit" value="Entrar" name = "btningresar"><br>
+            </div>
         </form>
+        <?php
+        if(!empty($_GET))
+            if($_GET['error'] == 100){
+                echo "USUARIO Y/O CONTRASEÑA ERRONIA. FAVOR DE INTENTARLO";
+            }
+        ?>
         </div>
     </center>
 </body>
