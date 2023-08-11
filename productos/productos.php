@@ -24,10 +24,11 @@
     if($comando->num_rows > 0){/*AQUI ES IGUAL QUE EN C$, BUSCAMOS QUE SEA MAYOR QUE 0, UNA VEZ QUE SEA ASÍ, IMPRIMIMOS LOS PRODUCTOS*/
         echo "<table border='2' bgcolor = 'e9edc9'>
             <tr>
-            <th colspan='5'>TABLA DE PRODUCTO</th>
+            <th colspan='6'>TABLA DE PRODUCTO</th>
                 <tr><th>CODIGO</th>
                 <th>NOMBRE</th>
                 <th>PRECIO</th>
+                <th>IMAGEN</th>
                 <th>ELIMINAR</th>
                 <th>MODIFICAR</th>
             </tr>";//CON ESTO METEMOS LOS EL TITULO DE LA TABLA Y LOS TH SON LOS SUBTITULOS
@@ -36,6 +37,7 @@
                     <td>".$registro["codigo"]."</td>
                     <td>\n\t".$registro["nombre"]."</td>
                     <td>\n\t".$registro["precio"]."</td>
+                    <td><img src = '".$registro['image']."' width = '65px' height = '55px' ></td>
                     <td><a href = 'delete.php?codigo={$registro['codigo']}'><img src = '../img/delete_icon.png'></a></td>
                     <td><a href = 'update.php?codigo={$registro['codigo']}'><img src = '../img/update_icon.png'></a></td>
                 </tr>\n");
@@ -52,6 +54,8 @@
         Codigo del Producto: <input name = "codigo" type="text" value = "13"><br>
         Nombre del Producto: <input name = "nombre" type="text" value = "caguama miler"><br>
         Precio del Producto: <input name = "precio" type = "text" value = "12.12"><br>
+        Imagen: <input name = "imagen" type = "text" value = ""><br>
+
         <input type ="submit" value = 'Agregar Producto'>
     </fieldset>
 </form>

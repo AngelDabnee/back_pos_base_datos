@@ -4,7 +4,7 @@
     try {
         //$conn = new mysqli("localhost","id20924409_angeldabnee","AngelDabnee123.","id20924409_pos");
         $conn = new mysqli("localhost","root","","pos");
-        $sqlqueryselect = "INSERT INTO productos(codigo,nombre,precio) VALUE("."'".$_POST['codigo']."'".','."'".$_POST['nombre']."'".','.$_POST['precio'].");";
+        $sqlqueryselect = "INSERT INTO productos (codigo, nombre, precio, image) VALUES ('" . $_POST['codigo'] . "', '" . $_POST['nombre'] . "', " . $_POST['precio'] . ", '" . $_POST['imagen'] . "')";
         $comando = mysqli_query($conn , $sqlqueryselect);
         header('Location: productos.php');
     } catch (Exception $e) {
